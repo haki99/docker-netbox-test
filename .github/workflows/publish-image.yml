@@ -15,7 +15,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ${{ github.repository.name }}
+  IMAGE_NAME: docker-netbox-test
 
 jobs:
   # Push image to GitHub Packages.
