@@ -44,6 +44,8 @@ ln -sf /config/media /app/netbox/netbox/media
 
 ln -sf /config/configuration.py /app/netbox/netbox/netbox/configuration.py
 
+ln -sf /config/static /app/netbox/netbox/static
+
 mv /defaults/uwsgi.ini /app/netbox/netbox/uwsgi.ini > /dev/null 2>&1
 
 # permissions
