@@ -15,7 +15,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ghtoken_product_demo
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   # Push image to GitHub Packages.
