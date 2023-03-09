@@ -36,8 +36,8 @@ if [[ ! -f "/config/configuration.py" ]]; then
     done
 fi
 
-if [[ ! -f "/config/local_requirements.txt" ]]; then
-    cp /defaults/local_requirements.txt /config/local_requirements.txt
+if [[ ! -f "/app/netbox/local_requirements.txt" ]]; then
+    cp /defaults/local_requirements.txt /app/netbox/local_requirements.txt
 fi
 
 if [[ ! -e "/config/media" ]]; then
