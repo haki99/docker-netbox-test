@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 mkdir -p /config/scripts
+mkdir -p /config/reports
 
 declare -A NETBOX_CONF
 NETBOX_CONF[ALLOWED_HOST]=${ALLOWED_HOST:-netbox.example.com}
@@ -35,6 +36,10 @@ if [[ ! -f "/config/configuration.py" ]]; then
     done
 fi
 
+if [[ ! -f "/config/local_requirements.txt" ]]; then
+    cp /defaults/local_requirements.txt /config/local_requirements.txt
+fi
+
 if [[ ! -e "/config/media" ]]; then
     mv /app/netbox/netbox/media /config/media
 fi
@@ -47,6 +52,12 @@ ln -sf /config/configuration.py /app/netbox/netbox/netbox/configuration.py
 ln -sf /config/static /app/netbox/netbox/static
 
 mv /defaults/uwsgi.ini /app/netbox/netbox/uwsgi.ini > /dev/null 2>&1
+
+# Plugin install
+cd /app/netbox/netbox
+pip3 install netbox-topology-views
+python3 manage.py migrate netbox_topology_views
+python3 manage.py collectstatic --no-input
 
 # permissions
 chown -R abc:abc \
