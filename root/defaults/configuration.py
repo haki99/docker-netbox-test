@@ -222,12 +222,14 @@ PLUGINS = ["netbox_topology_views"]
 
 # Plugins configuration settings. These settings are used by various plugins that the user may have installed.
 # Each key in the dictionary is the name of an installed plugin and its value is a dictionary of settings.
-# PLUGINS_CONFIG = {
-#     'my_plugin': {
-#         'foo': 'bar',
-#         'buzz': 'bazz'
-#     }
-# }
+PLUGINS_CONFIG = {
+    'netbox_topology_views': {
+        'preselected_device_roles': [],
+        'draw_default_layout': True,
+        'allow_coordinates_saving': True,
+        'always_save_coordinates': True
+    }
+}
 
 # When determining the primary IP address for a device, IPv6 is preferred over IPv4 by default. Set this to True to
 # prefer IPv4 instead.
@@ -248,7 +250,6 @@ REMOTE_AUTH_DEFAULT_PERMISSIONS = {{REMOTE_AUTH_DEFAULT_PERMISSIONS}}
 # This repository is used to check whether there is a new release of NetBox available. Set to None to disable the
 # version check or use the URL below to check for release in the official NetBox repository.
 RELEASE_CHECK_URL = 'https://api.github.com/repos/netbox-community/netbox/releases'
-# RELEASE_CHECK_URL = 'https://api.github.com/repos/netbox-community/netbox/releases'
 
 # The file path where custom reports will be stored. A trailing slash is not needed. Note that the default value of
 # this setting is derived from the installed location.
