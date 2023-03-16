@@ -49,6 +49,11 @@ RUN \
     wheel && \
   pip3 install --no-cache-dir --ignore-installed --find-links https://wheel-index.linuxserver.io/alpine-3.17/ -r requirements.txt && \
   pip3 install --no-cache-dir -U pip netbox-topology-views && \
+  ln -s /usr/bin/python3 /usr/bin/python
+
+  echo "**** crond job creation ****" && \
+  RUN echo '*  *  1  *  *    /app/netbox/contrib/netbox-housekeeping.sh' >> /var/spool/cron/crontabs/root
+
   echo "**** cleanup ****" && \
   apk del --purge \
     build-dependencies && \
