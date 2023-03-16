@@ -52,7 +52,7 @@ RUN \
   ln -s /usr/bin/python3 /usr/bin/python
 
   echo "**** crond job creation ****" && \
-  RUN echo '*  *  1  *  *    /app/netbox/contrib/netbox-housekeeping.sh' >> /var/spool/cron/crontabs/root
+  echo '*  *  1  *  *    /app/netbox/contrib/netbox-housekeeping.sh' >> /var/spool/cron/crontabs/root
 
   echo "**** cleanup ****" && \
   apk del --purge \
