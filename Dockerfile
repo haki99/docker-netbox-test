@@ -67,7 +67,3 @@ COPY root/ /
 EXPOSE 8000
 
 VOLUME /config
-
-RUN \
-  echo "**** create documentation files ****" && \
-  python3 -m mkdocs build --config-file /app/netbox/mkdocs.yml --site-dir /app/netbox/netbox/project-static/docs/
