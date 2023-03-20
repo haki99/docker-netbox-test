@@ -49,6 +49,9 @@ RUN \
     wheel && \
   pip3 install --no-cache-dir --ignore-installed --find-links https://wheel-index.linuxserver.io/alpine-3.17/ -r requirements.txt && \
   pip3 install --no-cache-dir -U pip netbox-topology-views && \
+
+  echo "**** create documentation files ****" && \
+  python3 -m mkdocs build --config-file /app/netbox/mkdocs.yml --site-dir /app/netbox/netbox/project-static/docs/
   
   echo "**** crond job creation ****" && \
   echo "*  *  1  *  *    /app/netbox/contrib/netbox-housekeeping.sh" >> /var/spool/cron/crontabs/root && \
